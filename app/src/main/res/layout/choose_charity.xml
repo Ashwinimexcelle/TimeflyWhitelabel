@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/_85sdp"
+    android:background="@drawable/charity_item_bg"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginBottom="@dimen/_5sdp"
+    android:layout_height="@dimen/_85sdp">
+
+    <ImageView
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:id="@+id/charity_category_image"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_menu_camera"
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/_12sdp"
+        android:text="Animal"/>
+
+
+</LinearLayout>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/_20sdp"
+    android:layout_marginRight="@dimen/_20sdp"
+    tools:context=".ui.register.RegisterActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_100sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:background="@android:color/transparent"
+        android:text="Register"
+        android:id="@+id/register_txt"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="@color/color_dark_grey"
+        android:textSize="@dimen/_14ssp" />
+
+
+    <TextView
+        android:id="@+id/register_txt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:background="@android:color/transparent"
+        android:text="Its Easy and Free"
+        android:textColor="@color/color_dark_grey"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_txt"
+      />
+
+    <EditText
+        android:id="@+id/et_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        app:layout_constraintTop_toBottomOf="@+id/register_txt1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:background="@drawable/rounded_corner_edittext"
+        android:gravity="center_vertical"
+        android:hint="Email id"
+        android:paddingRight="@dimen/_50sdp"
+        android:inputType="text"
+        android:paddingLeft="@dimen/_10sdp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textColorHint="@color/edittext_border_color"
+        android:textSize="@dimen/_10ssp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_menu_camera"
+        app:layout_constraintTop_toTopOf="@+id/et_id"
+        app:layout_constraintBottom_toBottomOf="@+id/et_id"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/_20sdp"/>
+
+
+
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        app:layout_constraintTop_toBottomOf="@+id/et_id"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/rounded_corner_edittext"
+        android:gravity="center_vertical"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="@dimen/_10sdp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textColorHint="@color/edittext_border_color"
+        android:textSize="@dimen/_10ssp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_menu_camera"
+        app:layout_constraintTop_toTopOf="@+id/et_password"
+        app:layout_constraintBottom_toBottomOf="@+id/et_password"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/_20sdp"/>
+    <EditText
+        android:id="@+id/et_confirmpassword"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        app:layout_constraintTop_toBottomOf="@+id/et_password"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/rounded_corner_edittext"
+        android:gravity="center_vertical"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:paddingLeft="@dimen/_10sdp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textColorHint="@color/edittext_border_color"
+        android:textSize="@dimen/_10ssp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_menu_camera"
+        app:layout_constraintTop_toTopOf="@+id/et_confirmpassword"
+        app:layout_constraintBottom_toBottomOf="@+id/et_confirmpassword"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/_20sdp"/>
+
+
+    <TextView
+        android:id="@+id/button_register"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        app:layout_constraintTop_toBottomOf="@+id/et_confirmpassword"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/rounded_corner_next_button"
+        android:textAllCaps="false"
+        android:text="Register"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="normal" />
+    <TextView
+        android:id="@+id/tv_register_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:background="@drawable/bottam_border"
+        android:paddingBottom="@dimen/_1sdp"
+        android:text="Already have an account?"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12ssp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_register_user1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:gravity="center"
+        android:paddingBottom="1dp"
+        android:text="Register Here"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:textColor="@color/color_dark_blue"
+        android:textSize="@dimen/_12ssp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_register_user" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

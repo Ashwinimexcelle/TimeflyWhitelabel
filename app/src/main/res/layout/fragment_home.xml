@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/text_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upcoming Events"
+                android:textAlignment="center"
+                android:textColor="@color/color_dark_blue"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/upcomming_event_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/text_home"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <com.arindicatorview.ARIndicatorView
+                android:id="@+id/ar_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:indicator_size="15"
+                app:layout_constraintTop_toBottomOf="@+id/upcomming_event_rv"
+                app:number_of_indicators="5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:indicator_color="@color/colorAccent"
+                app:selected_color="@color/colorPrimary"
+                app:indicator_animation="@anim/zoom_in"
+                app:indicator_shape="@drawable/round_shape"
+                app:indicator_scrubbing="true"
+                app:animate_indicator_scrubbing="true"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose Charity"
+                android:id="@+id/charity_tv"
+                app:layout_constraintTop_toBottomOf="@+id/ar_indicator"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textColor="@color/color_dark_blue"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/choose_chairty_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/charity_tv"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:nestedScrollingEnabled="false"
+                android:stretchMode="columnWidth"
+                android:clipToPadding="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+            >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+            <!--<GridView
+                android:id="@+id/simpleGridView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:footerDividersEnabled="false"
+                app:layout_constraintTop_toBottomOf="@+id/charity_tv"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:padding="1dp"
+                android:nestedScrollingEnabled="false"
+                android:numColumns="3" />-->
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

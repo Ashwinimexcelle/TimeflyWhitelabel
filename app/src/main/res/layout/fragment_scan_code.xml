@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/_20sdp"
+    android:layout_marginRight="@dimen/_20sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.scancode.ScanCodeFragment">
+
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Start Event"
+    android:id="@+id/start_tv"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:textSize="@dimen/_12ssp"
+    android:textColor="@color/color_dark_blue"
+    android:layout_marginTop="@dimen/_10sdp"/>
+
+    <TextView
+        android:id="@+id/subtitle_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scan_code"
+        app:layout_constraintTop_toBottomOf="@+id/start_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10ssp"
+        />
+
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_300sdp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle_scan"
+         />
+    <TextView
+        android:id="@+id/barcode_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Place the QR Code inside the area"
+        app:layout_constraintTop_toBottomOf="@+id/surfaceView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/_10ssp"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scanning will start automatically"
+        app:layout_constraintTop_toBottomOf="@+id/barcode_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/_10ssp"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/black"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

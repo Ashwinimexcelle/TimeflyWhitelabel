@@ -1,0 +1,91 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_marginLeft="@dimen/_20sdp"
+    android:layout_marginRight="@dimen/_20sdp"
+    android:orientation="vertical">
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager11"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        android:layout_alignParentStart="true"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        android:id="@+id/indicator"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/pager11"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:dotsColor="@color/grey"
+        app:dotsStrokeColor="@color/grey"
+        app:dotsCornerRadius="8dp"
+        app:dotsSize="@dimen/_5sdp"
+        app:dotsSpacing="4dp"
+        app:selectedDotColor="@color/color_dark_blue"
+        app:dotsStrokeWidth="2dp"/>
+
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@+id/indicator"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:gravity="left"
+        android:text="@string/title_one"
+        android:textColor="@color/color_dark_blue"
+        android:visibility="visible"
+        android:textSize="@dimen/_12ssp" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/sub_title_one"
+        app:layout_constraintTop_toBottomOf="@+id/title1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:gravity="left"
+        android:textColor="@color/color_dark_grey"
+        android:visibility="visible"
+        android:textSize="@dimen/_10ssp" />
+
+    <TextView
+            android:id="@+id/skip_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:gravity="center"
+            android:text="skip"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textSize="@dimen/_14ssp"
+          />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:id="@+id/next_id"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="@dimen/_10sdp"
+        android:background="@drawable/red_circle_bg"
+        android:src="@drawable/ic_baseline_east_24"
+        android:layout_marginBottom="@dimen/_30sdp"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

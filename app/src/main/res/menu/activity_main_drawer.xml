@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/charityFragment"
+        android:title="Menu-1"
+        app:showAsAction="never"
+        android:icon="@drawable/list"
+        />
+
+
+    <item
+        android:id="@+id/calanderFragment"
+        android:title="Menu-2"
+        android:icon="@drawable/list"
+        app:showAsAction="never"
+
+        />
+    <item
+        android:id="@+id/changePasswordFragment"
+        android:title="Change Password"
+        app:showAsAction="never"
+        android:icon="@drawable/lock"
+
+        />
+    <item
+        android:id="@+id/homeFragment"
+        android:title="Terms"
+        app:showAsAction="never"
+        android:icon="@drawable/list"
+
+        />
+    <item
+        android:id="@+id/profileFragment"
+        android:title="Privacy Policy"
+        app:showAsAction="never"
+        android:icon="@drawable/pp"
+
+        />
+
+
+    <item
+        android:id="@+id/loginActivity"
+        android:title="Logout"
+        app:showAsAction="never"
+        android:icon="@drawable/ion_exit"
+
+        />
+</menu>

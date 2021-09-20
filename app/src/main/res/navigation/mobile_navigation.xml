@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mexcelle.whitelable.ui.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/action_homeFragment_to_charityDeatilsFragment"
+            app:destination="@id/charityDeatilsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calanderFragment"
+        android:name="com.mexcelle.whitelable.ui.calander.CalanderFragment"
+        android:label="Calander"
+        tools:layout="@layout/fragment_calander" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.mexcelle.whitelable.ui.changepassword.ChangePasswordFragment"
+        android:label="ChangePassword"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/charityFragment"
+        android:name="com.mexcelle.whitelable.ui.charity.CharityFragment"
+        android:label="Charity"
+        tools:layout="@layout/fragment_charity" >
+        <action
+            android:id="@+id/action_charityFragment_to_charityDeatilsFragment"
+            app:destination="@id/charityDeatilsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.mexcelle.whitelable.ui.profle.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.mexcelle.whitelable.ui.login.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/charityDeatilsFragment"
+        android:name="com.mexcelle.whitelable.ui.charitydetails.CharityDeatilsFragment"
+        android:label="fragment_charity_deatils"
+        tools:layout="@layout/fragment_charity_deatils" >
+    <argument
+        android:name="from"
+        app:argType="string" />
+        <action
+            android:id="@+id/action_charityDeatilsFragment_to_scanCodeFragment"
+            app:destination="@id/scanCodeFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/scanCodeFragment"
+        android:name="com.mexcelle.whitelable.ui.scancode.ScanCodeFragment"
+        android:label="fragment_scan_code"
+        tools:layout="@layout/fragment_scan_code" />
+    <activity
+        android:id="@+id/registerActivity"
+        android:name="com.mexcelle.whitelable.ui.register.RegisterActivity"
+        android:label="activity_register"
+        tools:layout="@layout/activity_register" />
+
+
+</navigation>

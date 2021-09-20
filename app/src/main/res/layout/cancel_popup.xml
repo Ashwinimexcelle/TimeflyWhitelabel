@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/_20sdp"
+    android:layout_height="@dimen/_230sdp"
+    android:paddingLeft="@dimen/_15sdp"
+    android:paddingRight="@dimen/_15sdp"
+    android:background="@drawable/rounded_corner_edittext">
+
+    <TextView
+        android:id="@+id/cancle_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Cancel going to Events?"
+        android:textSize="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:textColor="@color/color_dark_blue"
+        />
+
+    <TextView
+        android:id="@+id/cancle_sub_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@+id/cancle_title"
+        android:text="@string/cancel_subtitle"
+        android:textSize="@dimen/_15sdp"/>
+
+    <CheckBox
+        android:id="@+id/check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/cancle_sub_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:gravity="center"
+        android:backgroundTint="@color/color_dark_blue"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/check_box"
+        app:layout_constraintBottom_toBottomOf="@+id/check_box"
+        app:layout_constraintLeft_toRightOf="@+id/check_box"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:text="DO not show it anymore!!"
+        />
+<TextView
+    android:layout_width="@dimen/_120sdp"
+    android:layout_height="@dimen/_45sdp"
+    app:layout_constraintTop_toBottomOf="@+id/check_box"
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:id="@+id/yes_btn"
+    android:text="Yes"
+    android:layout_marginTop="@dimen/_20sdp"
+    android:textColor="@color/white"
+    android:gravity="center"
+    android:textSize="@dimen/_15ssp"
+    android:background="@drawable/rounded_corner_red_bg"/>
+
+    <TextView
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_45sdp"
+        app:layout_constraintTop_toBottomOf="@+id/check_box"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/not_btn"
+        android:text="Nope"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="@dimen/_15ssp"
+        android:background="@drawable/rounded_corner_light_grey"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

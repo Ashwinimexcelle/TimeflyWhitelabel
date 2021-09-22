@@ -33,7 +33,7 @@ object SignupActivityRepository {
 
                 val msg = data!!.message
 
-                signupResponseData.value = SignupResponseData(msg)
+               // signupResponseData.value = SignupResponseData(msg)
             }
         })
 

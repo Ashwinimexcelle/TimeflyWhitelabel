@@ -19,6 +19,7 @@
     <color name="color_middle_grey">#F8F8F8</color>
     <color name="get_started_color">#5B6787</color>
     <color name="grey_color_list">#A7ADAD</color>
+    <color name="white_with_transparency">#80FFFFFF</color>
 
 
 </resources>

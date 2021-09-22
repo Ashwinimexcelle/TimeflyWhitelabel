@@ -7,14 +7,17 @@ import com.mexcelle.whitelable.model.SignupResponseData
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface ApiInterface {
 
-    @POST("/auth/register")
+    @Headers("Content-Type:application/json")
+    @POST("/api/auth/login")
     fun login(@Body loginData:LoginData) : Call<LoginResponseData>
 
 
-    @POST("/auth/login")
+    @Headers("Content-Type:application/json")
+    @POST("/api/auth/register")
     fun signUp() : Call<SignupResponseData>
 }

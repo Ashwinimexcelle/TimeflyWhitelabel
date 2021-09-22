@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
+    <data class="LoginActivityBinding">
 
         <variable
             name="loginViewModel"
@@ -9,18 +10,9 @@
 
     </data>
 
-
-    <!--
-    <?xml version="1.0" encoding="utf-8"?>
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    -->
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.login.LoginActivity">
+        android:layout_height="match_parent">
 
 
         <ScrollView
@@ -31,6 +23,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -38,19 +32,6 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
-
-                    <ImageView
-                        android:id="@+id/login_image_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_200sdp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/bgmen"
-                        app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
 
                     <ir.alirezabdn.wp7progress.WP7ProgressBar
                         android:id="@+id/wp7progressBar"
@@ -70,6 +51,19 @@
                         app:layout_constraintTop_toBottomOf="@+id/login_image_id" />
 
 
+
+
+                    <ImageView
+                        android:id="@+id/login_image_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_200sdp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bgmen"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/welcome_txt_id"
                         android:layout_width="wrap_content"
@@ -80,8 +74,7 @@
                         android:textSize="@dimen/_14ssp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/login_image_id"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toBottomOf="@+id/login_image_id" />
 
                     <TextView
                         android:id="@+id/welcome_txt_id2"
@@ -94,9 +87,9 @@
                         android:textSize="@dimen/_10ssp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/welcome_txt_id"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toBottomOf="@+id/welcome_txt_id" />
 
+                    <!--tools:ignore="MissingConstraints"-->
                     <EditText
                         android:id="@+id/et_email"
                         android:layout_width="match_parent"
@@ -106,10 +99,10 @@
                         android:hint="Email Id"
                         android:inputType="text"
                         android:paddingLeft="@dimen/_10sdp"
+                        android:text="@={loginViewModel.emailId}"
                         android:textColor="@color/black"
                         android:textColorHint="@color/edittext_border_color"
                         android:textSize="@dimen/_10ssp"
-                        android:text="@={loginViewModel.emailId}"
                         app:layout_constraintTop_toBottomOf="@+id/welcome_txt_id2" />
 
                     <ImageView
@@ -131,7 +124,7 @@
                         android:hint="Password"
                         android:inputType="textPassword"
                         android:paddingLeft="@dimen/_10sdp"
-                        android:text="@{loginViewModel.password}"
+                        android:text="@={loginViewModel.password}"
                         android:textColor="@color/black"
                         android:textColorHint="@color/edittext_border_color"
                         android:textSize="@dimen/_10ssp"

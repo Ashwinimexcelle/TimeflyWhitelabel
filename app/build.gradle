@@ -3,15 +3,22 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
 }
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+
+   /* dataBinding {
+        enabled true
+    }*/
+
+
     defaultConfig {
         applicationId "com.mexcelle.whitelable"
-        minSdkVersion 19
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -20,13 +27,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
-        buildFeatures {
+        debug {
+            manifestPlaceholders.cleartextTrafficPermitted ="true"
+        }
+
+       buildFeatures {
             dataBinding true
         }
     }
@@ -38,6 +51,8 @@ android {
         jvmTarget = '1.8'
     }
 }
+
+
 
 dependencies {
 
@@ -89,6 +104,8 @@ dependencies {
     // - - Retrofit2
     def retrofit_version = "2.9.0"
     def logging_version = "4.3.1"
+    def gradle_version = "4.1.2"
+
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.okhttp3:okhttp:$logging_version"
@@ -96,6 +113,9 @@ dependencies {
 
     // - - WP7 Progress Bar
     implementation 'com.github.shadowalker77:wp7progressbar:1.0.5'
+    kapt "com.android.databinding:compiler:$gradle_version"
+    implementation 'com.intuit.sdp:sdp-android:1.0.4'
+    implementation 'com.github.ibrahimsn98:CirclesLoadingView:1.0'
 
 
 

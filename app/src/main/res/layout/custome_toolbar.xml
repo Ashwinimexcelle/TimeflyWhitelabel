@@ -27,13 +27,13 @@
             >
 
             <ImageView
+                android:id="@+id/back_btn"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
-                android:id="@+id/back_btn"
                 android:layout_centerVertical="true"
                 android:padding="@dimen/_2sdp"
-                android:src="@drawable/back"
-                />
+                android:visibility="gone"
+                android:src="@drawable/back" />
 
             <TextView
                 android:id="@+id/screen_name"

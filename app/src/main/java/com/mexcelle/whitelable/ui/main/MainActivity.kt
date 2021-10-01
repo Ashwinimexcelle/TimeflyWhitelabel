@@ -55,7 +55,10 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         navigationView.setupWithNavController(navController)
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        getActionBar()?.setDisplayHomeAsUpEnabled(false)
+        actionBar?.setHomeButtonEnabled(false); // disable the button
+        actionBar?.setDisplayHomeAsUpEnabled(false); // remove the left caret
+        actionBar?.setDisplayShowHomeEnabled(false); // remove the icon
         navImage!!.setOnClickListener {
 
             // If the navigation drawer is not open then open it, if its already open then close it.

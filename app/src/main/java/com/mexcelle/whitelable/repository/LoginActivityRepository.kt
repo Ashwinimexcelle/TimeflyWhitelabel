@@ -35,17 +35,16 @@ object LoginActivityRepository {
                     if(response.body().toString() !=null){
 
                         val data = response.body()
-                        val msg = data!!.message
-
-                        loginResponseData.value = data
-
+                        loginResponseData.value = data!!
 
                     }else{
 
+                        Utility.hideProgressDialog(context)
                         Utility.showDialog( context,"Error !!","Server Error.","Ok","Cancel")
                     }
                 }else{
 
+                    Utility.hideProgressDialog(context)
                     Utility.showDialog( context,"Error !!","Server Error.","Ok","Cancel")
 
                 }

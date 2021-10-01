@@ -6,7 +6,11 @@ import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.text.TextUtils
 import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import com.mexcelle.whitelable.R
@@ -32,7 +36,7 @@ class Utility private constructor() {
             alertDialog = alertDialogBuilder.create()
             alertDialogBuilder.setTitle(title)
             alertDialogBuilder.setMessage(msg)
-            alertDialogBuilder.setPositiveButton("Yes", { _: DialogInterface, _: Int ->
+            alertDialogBuilder.setPositiveButton("Ok", { _: DialogInterface, _: Int ->
                 alertDialog!!.dismiss()
             })
             alertDialogBuilder.setNegativeButton(
@@ -77,6 +81,38 @@ class Utility private constructor() {
                 }
 
         }
+
+        fun isOnline(context: Context): Boolean {
+            val connectivityManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            if (connectivityManager != null) {
+                val capabilities =
+                    connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+                if (capabilities != null) {
+                    if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                        Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+                        return true
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                        Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
+                        return true
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                        Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
+                        return true
+                    }
+                }
+            }
+            return false
+        }
+
+        fun isValidEmail(target: CharSequence?): Boolean {
+            return if (TextUtils.isEmpty(target)) {
+                false
+            } else {
+                Patterns.EMAIL_ADDRESS.matcher(target).matches()
+            }
+        }
+
+
 
 
     }

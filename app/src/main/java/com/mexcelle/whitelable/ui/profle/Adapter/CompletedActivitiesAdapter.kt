@@ -1,4 +1,4 @@
-package com.mexcelle.whitelable.ui.home.Adapter
+package com.mexcelle.whitelable.ui.profle.Adapter
 
 import android.content.Context
 import android.graphics.Outline
@@ -13,26 +13,24 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mexcelle.whitelable.R
-import com.mexcelle.whitelable.model.UpcomingActivitiesResponseDataDetails
-import java.util.*
+import com.mexcelle.whitelable.model.CompletedActivitiesResponseDataDetails
+import java.util.ArrayList
 
-//UpcomingEventAdapter
-
-class UpcomingEventAdapter(
-    mList: ArrayList<UpcomingActivitiesResponseDataDetails>,
+class CompletedActivitiesAdapter(
+    mList: ArrayList<CompletedActivitiesResponseDataDetails>,
     activityContext: Context, listener: OnItemClickListener) :
-    RecyclerView.Adapter<UpcomingEventAdapter.MyViewHolder?>(), View.OnClickListener {
+    RecyclerView.Adapter<CompletedActivitiesAdapter.MyViewHolder?>(), View.OnClickListener {
     var mContext: Context
     private val listener: OnItemClickListener
     private var image: String? = null
-    var upcomingActivitiesList: ArrayList<UpcomingActivitiesResponseDataDetails> = ArrayList<UpcomingActivitiesResponseDataDetails>()
+    var completedActivitiesList: ArrayList<CompletedActivitiesResponseDataDetails> = ArrayList<CompletedActivitiesResponseDataDetails>()
 
 
     init {
 
         mContext = activityContext
         this.listener = listener
-        this.upcomingActivitiesList = mList
+        this.completedActivitiesList = mList
     }
 
 
@@ -88,9 +86,9 @@ class UpcomingEventAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, listPosition: Int) {
 
-        holder.foodDonationTextView.text = upcomingActivitiesList[listPosition].name
-        holder.foodTextView.text =  upcomingActivitiesList[listPosition].place
-        Glide.with(holder.itemView.getContext()).load(upcomingActivitiesList!!.get(listPosition)!!.image)
+        holder.foodDonationTextView.text = completedActivitiesList[listPosition].name
+        holder.foodTextView.text =  completedActivitiesList[listPosition].place
+        Glide.with(holder.itemView.getContext()).load(completedActivitiesList!!.get(listPosition)!!.image)
             .into(holder.upcomingactivityImageView);
 
         holder.joinTextview.setOnClickListener {
@@ -107,7 +105,7 @@ class UpcomingEventAdapter(
 
 
     override fun getItemCount(): Int {
-        return upcomingActivitiesList.size
+        return completedActivitiesList.size
 
     }
 

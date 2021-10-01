@@ -26,7 +26,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/upcomming_event_rv"
+                android:id="@+id/upcomming_activities_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -41,7 +41,7 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:indicator_size="15"
-                app:layout_constraintTop_toBottomOf="@+id/upcomming_event_rv"
+                app:layout_constraintTop_toBottomOf="@+id/upcomming_activities_rv"
                 app:number_of_indicators="5"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:indicator_color="@color/colorAccent"
@@ -65,7 +65,7 @@
                 android:textColor="@color/color_dark_blue"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/choose_chairty_rv"
+                android:id="@+id/cause_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/charity_tv"

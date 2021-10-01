@@ -15,5 +15,6 @@ data class LoginResponseDetailData(
     val location : String,
     val name : String,
     val skills : String,
+    val auth_token : String
 
 )

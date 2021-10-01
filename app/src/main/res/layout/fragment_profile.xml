@@ -1,313 +1,317 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginRight="@dimen/_20sdp"
-    android:layout_marginLeft="@dimen/_20sdp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.profle.ProfileFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="ProfileFragmentBinding">
+
+        <variable
+            name="profileViewModel"
+            type="com.mexcelle.whitelable.viewmodel.ProfileViewModel" />
+
+    </data>
 
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp">
+
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="@dimen/_80sdp"
-                android:id="@+id/user_image"
-                app:civ_border_color="@color/grey"
-                app:civ_border_width="@dimen/_2sdp"
-                android:layout_height="@dimen/_80sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:src="@drawable/bgmen"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+            android:layout_height="match_parent">
 
-
-            <ImageView
-                android:id="@+id/camara_img"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                app:layout_constraintTop_toBottomOf="@+id/user_image"
-                android:layout_marginTop="@dimen/_15sdp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="@+id/user_image"
-                android:src="@drawable/camera"/>
-
-            <ImageView
-                android:id="@+id/edit_img"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:padding="@dimen/_10sdp"
-                android:background="@drawable/blue_circle"
-                app:layout_constraintRight_toRightOf="parent"
-                android:src="@drawable/save"/>
-
-            <TextView
-                android:id="@+id/user_name_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="Alice Young"
-                android:textColor="@color/color_dark_blue"
-                app:layout_constraintTop_toBottomOf="@+id/user_image"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:textSize="@dimen/_12sdp"/>
-
-            <LinearLayout
-                android:id="@+id/parent_rl"
-                android:layout_marginTop="@dimen/_20sdp"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/user_name_tv"
-                app:layout_constraintRight_toRightOf="parent"
-                android:background="@drawable/grey_round_corner_bg"
-                app:layout_constraintLeft_toLeftOf="parent">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/color_dark_blue"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:textSize="@dimen/_10sdp"
-                    android:text="Bio"/>
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/user_image"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:src="@drawable/bgmen"
+                    app:civ_border_color="@color/grey"
+                    app:civ_border_width="@dimen/_2sdp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/camara_img"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:src="@drawable/camera"
+                    app:layout_constraintBottom_toBottomOf="@+id/user_image"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/user_image" />
+
+                <ImageView
+                    android:id="@+id/edit_img"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="@drawable/blue_circle"
+                    android:padding="@dimen/_10sdp"
+                    android:src="@drawable/save"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/bio_et"
-                    android:layout_width="match_parent"
-                    android:layout_below="@+id/about_title"
+                    android:id="@+id/user_name_tv"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:text="@string/sub_title_one"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textColor="@color/color_dark_blue"
+                    android:textSize="@dimen/_12sdp"
+                    android:text="@={profileViewModel.username}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/user_image" />
+
+                <LinearLayout
+                    android:id="@+id/parent_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/grey_round_corner_bg"
+                    android:orientation="vertical"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/user_name_tv">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:text="Bio"
+                        android:textColor="@color/color_dark_blue"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/bio_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/about_title"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="@color/grey"
+                        android:gravity="top"
+                        android:text="@={profileViewModel.bio}"
+                        android:hint="Bio"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_8ssp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/age_t_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Age:"
+                    android:textColor="@color/color_dark_blue"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/parent_rl" />
+
+
+                <TextView
+                    android:id="@+id/age_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
                     android:textColor="@color/black"
+                    android:textSize="@dimen/_11ssp"
+                    android:visibility="visible"
+                    android:text="@={profileViewModel.age}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/age_t_id" />
+
+                <Spinner
+                    android:id="@+id/age_sp"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/spinner_bg"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/age_t_id"
+                    android:entries="@{profileViewModel.ageList}"/>
+
+                <TextView
+                    android:id="@+id/company_t_id"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:text="Company:"
+                    android:textColor="@color/color_dark_blue"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/age_t_id" />
+
+
+                <EditText
+                    android:id="@+id/company_id"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:text="@={profileViewModel.companyName}"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/company_t_id" />
+
+                <TextView
+                    android:id="@+id/gender_t_id"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:text="Gender:"
+                    android:textColor="@color/color_dark_blue"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/parent_rl" />
+
+
+                <TextView
+                    android:id="@+id/gender_id"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11ssp"
+                    android:visibility="visible"
+                    android:text="@={profileViewModel.gender}"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gender_t_id" />
+
+                <Spinner
+                    android:id="@+id/gender_sp"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_60sdp"
+                    android:background="@drawable/spinner_bg"
+                    android:visibility="gone"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gender_t_id" />
+
+                <TextView
+                    android:id="@+id/designation_t_id"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:text="Designation:"
+                    android:textColor="@color/color_dark_blue"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gender_t_id" />
+
+
+                <EditText
+                    android:id="@+id/designation_id"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:text="@={profileViewModel.designation}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/designation_t_id" />
+
+                <TextView
+                    android:id="@+id/email_t_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Email"
+                    android:textColor="@color/color_dark_blue"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/company_id" />
+
+                <EditText
+                    android:id="@+id/email_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_marginRight="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:hint="Bio"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:text="@={profileViewModel.emailId}"
+                    android:textColor="@color/black"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/email_t_tv" />
+
+                <View
+                    android:id="@+id/viewid"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:background="@color/grey"
-                    android:textSize="@dimen/_8ssp" />
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/email_tv" />
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/event_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="Your Upcoming Events"
+                    android:textAlignment="center"
+                    android:textColor="@color/color_dark_blue"
+                    android:textSize="@dimen/_15sdp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewid" />
 
-            <TextView
-                android:id="@+id/age_t_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/parent_rl"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:text="Age:"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:textColor="@color/color_dark_blue"
-                android:textSize="@dimen/_10ssp"
-                />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/profile_upcomming_event_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/event_tv" />
 
+                <TextView
+                    android:id="@+id/complete_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="Complete Activity"
+                    android:textAlignment="center"
+                    android:textColor="@color/color_dark_blue"
+                    android:textSize="@dimen/_15sdp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_upcomming_event_rv" />
 
-            <TextView
-                android:id="@+id/age_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/age_t_id"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:text="20"
-                android:visibility="visible"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_11ssp"
-                />
-            <Spinner
-                android:id="@+id/age_sp"
-                android:layout_width="@dimen/_70sdp"
-                android:layout_height="@dimen/_30sdp"
-                android:visibility="gone"
-                android:layout_marginTop="@dimen/_20sdp"
-                app:layout_constraintTop_toBottomOf="@+id/age_t_id"
-                android:layout_marginLeft="@dimen/_10sdp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:background="@drawable/spinner_bg"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/profile_complete_event_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/complete_tv" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                />
-
-            <TextView
-                android:id="@+id/company_t_id"
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/age_t_id"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:text="Company:"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_50sdp"
-                android:textColor="@color/color_dark_blue"
-                android:textSize="@dimen/_10ssp"
-                />
-
-
-            <EditText
-                android:id="@+id/company_id"
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="@dimen/_30sdp"
-                app:layout_constraintTop_toBottomOf="@+id/company_t_id"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:text="mExcelle Technologies"
-                android:background="@color/white"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_11ssp"
-                />
-            <TextView
-                android:id="@+id/gender_t_id"
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/parent_rl"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="Gender:"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:textColor="@color/color_dark_blue"
-                android:textSize="@dimen/_10ssp"
-                />
-
-
-            <TextView
-                android:id="@+id/gender_id"
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/gender_t_id"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="female"
-                android:visibility="visible"
-                android:layout_marginRight="@dimen/_10sdp"
-
-                android:textColor="@color/black"
-                android:textSize="@dimen/_11ssp"
-                />
-
-            <Spinner
-                android:id="@+id/gender_sp"
-                android:visibility="gone"
-                android:background="@drawable/spinner_bg"
-                android:layout_width="@dimen/_70sdp"
-                android:layout_height="@dimen/_30sdp"
-                app:layout_constraintTop_toBottomOf="@+id/gender_t_id"
-                android:layout_marginRight="@dimen/_60sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                app:layout_constraintRight_toRightOf="parent"/>
-            <TextView
-                android:id="@+id/designation_t_id"
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/gender_t_id"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="Designation:"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_50sdp"
-                android:textColor="@color/color_dark_blue"
-                android:textSize="@dimen/_10ssp"
-                />
-
-
-            <EditText
-                android:id="@+id/designation_id"
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="@dimen/_30sdp"
-                app:layout_constraintTop_toBottomOf="@+id/designation_t_id"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="Android Developer"
-                android:background="@color/white"
-                android:textColor="@color/black"
-                android:paddingLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:textSize="@dimen/_11ssp"
-                />
-            <TextView
-                android:id="@+id/email_t_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email"
-                app:layout_constraintTop_toBottomOf="@+id/company_id"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:textColor="@color/color_dark_blue"
-                />
-
-            <EditText
-                android:id="@+id/email_tv"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
-                android:text="abc@gmail.com"
-                android:background="@color/white"
-                app:layout_constraintTop_toBottomOf="@+id/email_t_tv"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:paddingLeft="@dimen/_10sdp"
-                android:textColor="@color/black"
-                />
-            <View
-                android:id="@+id/viewid"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/grey"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email_tv"
-                android:layout_marginTop="@dimen/_20sdp"
-                />
-            <TextView
-                android:id="@+id/event_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:text="Your Upcoming Events"
-                android:textAlignment="center"
-                android:textColor="@color/color_dark_blue"
-                android:textSize="@dimen/_15sdp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewid"
-                />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/profile_upcomming_event_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginLeft="@dimen/_5sdp"
-                app:layout_constraintTop_toBottomOf="@id/event_tv"
-                app:layout_constraintRight_toRightOf="parent"/>
-
-            <TextView
-                android:id="@+id/complete_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:text="Complete Activity"
-                android:textAlignment="center"
-                android:textColor="@color/color_dark_blue"
-                android:textSize="@dimen/_15sdp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_upcomming_event_rv"
-                />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/profile_complete_event_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginLeft="@dimen/_5sdp"
-                app:layout_constraintTop_toBottomOf="@id/complete_tv"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="@dimen/_20sdp"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

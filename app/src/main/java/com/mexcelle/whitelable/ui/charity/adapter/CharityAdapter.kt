@@ -11,14 +11,31 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.mexcelle.whitelable.R
+import com.mexcelle.whitelable.model.CalendarwiseResponseDataDetails
+import com.mexcelle.whitelable.model.UpcomingActivitiesResponseData
+import com.mexcelle.whitelable.model.UpcomingActivitiesResponseDataDetails
+import java.util.ArrayList
 
 
-
-class CharityAdapter(activityContext: Context, listener: OnItemClickListener) : RecyclerView.Adapter<CharityAdapter.MyViewHolder?>(), View.OnClickListener {
+class CharityAdapter(
+    mList: ArrayList<UpcomingActivitiesResponseDataDetails>,
+    activityContext: Context, listener: OnItemClickListener) : RecyclerView.Adapter<CharityAdapter.MyViewHolder?>(), View.OnClickListener {
     var mContext: Context
     private val listener: OnItemClickListener
     private var image: String? = null
+    var upcomingActivitiesResponseDataDetails: ArrayList<UpcomingActivitiesResponseDataDetails> = ArrayList<UpcomingActivitiesResponseDataDetails>()
+
+
+
+    init {
+
+        mContext = activityContext
+        this.listener = listener
+        this.upcomingActivitiesResponseDataDetails = mList
+    }
+
 
     interface OnItemClickListener {
         fun onItemClick()
@@ -65,19 +82,23 @@ class CharityAdapter(activityContext: Context, listener: OnItemClickListener) : 
 
     override fun onBindViewHolder(holder: MyViewHolder, listPosition: Int) {
 
+        holder.foodTextView.text = upcomingActivitiesResponseDataDetails[listPosition].name
+        holder.foodDonationTextView.text = upcomingActivitiesResponseDataDetails[listPosition].place
+        Glide.with(holder.itemView.getContext()).load(upcomingActivitiesResponseDataDetails!!.get(listPosition)!!.image)
+            .into(holder.eventImageView);
+        holder.eventImageView.setOnClickListener {
+            listener.onItemClick()
+        }
+
+
     }
 
     override fun onClick(view: View) {}
 
 
-    init {
-
-        mContext = activityContext
-        this.listener = listener
-    }
 
     override fun getItemCount(): Int {
-        return 10
+        return upcomingActivitiesResponseDataDetails.size
 
     }
 

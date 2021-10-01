@@ -63,7 +63,7 @@ class JoinCharityFragment : Fragment() {
             navController.navigate(action)
         }
 
-        eventRecyclerview!!.setLayoutManager(LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false))
+        /*eventRecyclerview!!.setLayoutManager(LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false))
 
 
         eventRecyclerview!!.setAdapter(EventAdapter(activity!!, object : EventAdapter.OnItemClickListener {
@@ -74,7 +74,7 @@ class JoinCharityFragment : Fragment() {
 
 
             }
-        }))
+        }))*/
 
     }
 

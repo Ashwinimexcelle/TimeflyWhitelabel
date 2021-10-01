@@ -20,5 +20,5 @@
     <string name="sub_title_two">90\'s prism food truck aesthetic twee man braid austin banjo photo booth tofu poke chillwave master cleanse Succulents marfa truffaut distillery church-key four loko. Prism hashtag brunch 90\'s chambray, meditation fanny pack tilde messenger bag squid.</string>
     <string name="scan_code">Scan the QR code given at event location to\nparticipate in event</string>
     <string name="cancel_subtitle">Are you sure you want to cancel going\nto the event?</string>
-
+    <string name="shared_prefrence_key">com.mexcelle.whitelable</string>
 </resources>

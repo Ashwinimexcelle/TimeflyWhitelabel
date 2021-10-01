@@ -9,24 +9,32 @@ import com.mexcelle.whitelable.model.LoginData
 import com.mexcelle.whitelable.model.LoginResponseData
 import com.mexcelle.whitelable.repository.LoginActivityRepository
 import com.mexcelle.whitelable.util.Constants
+import com.mexcelle.whitelable.util.Utility
 
 class LoginViewModel : ViewModel() {
 
-    var loginResponseData: MutableLiveData<LoginResponseData?>? = null
+    var loginResponseData: MutableLiveData<LoginResponseData?>? = MutableLiveData<LoginResponseData?>()
     lateinit var loginData : LoginData
-   /* var emailId : MutableLiveData<String> = MutableLiveData<String>()
-    var password : MutableLiveData<String> = MutableLiveData<String>()*/
 
     var emailId : String = ""
     var password : String = ""
 
     fun login(context: Context) : MutableLiveData<LoginResponseData?>? {
 
-        loginData =  LoginData(emailId,password)
-        Log.e("DEBUG : ", loginData.toString())
 
-        loginResponseData = LoginActivityRepository.login(context,loginData)
+        if(Utility.isValidEmail(emailId)){
+
+            loginData =  LoginData(emailId,password)
+            loginResponseData = LoginActivityRepository.login(context,loginData)
+
+        }else{
+
+            Utility.hideProgressDialog(context)
+            Utility.showDialog(context,"Register","Please enter valid EmailId.","Ok","Cancel")
+
+        }
         return loginResponseData
+
     }
 
 }

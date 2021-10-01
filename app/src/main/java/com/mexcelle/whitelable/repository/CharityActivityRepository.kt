@@ -3,31 +3,30 @@ package com.mexcelle.whitelable.repository
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.mexcelle.whitelable.model.LoginResponseData
-import com.mexcelle.whitelable.model.SignupInputData
-import com.mexcelle.whitelable.model.SignupResponseData
+import com.mexcelle.whitelable.model.CalendarwiseResponseData
+import com.mexcelle.whitelable.model.UpcomingActivitiesResponseData
 import com.mexcelle.whitelable.retrofit.RetrofitClient
+import com.mexcelle.whitelable.util.Constants
 import com.mexcelle.whitelable.util.Utility
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-object SignupActivityRepository {
+object CharityActivityRepository {
 
-    val signupResponseData = MutableLiveData<SignupResponseData?>()
+    val upcomingActivitiesResponseData = MutableLiveData<UpcomingActivitiesResponseData?>()
 
-    fun signUp(context: Context,signupInputData: SignupInputData): MutableLiveData<SignupResponseData?> {
+    fun getUpcomingActivities(context: Context): MutableLiveData<UpcomingActivitiesResponseData?> {
 
-        val call = RetrofitClient.apiInterface.signUp(signupInputData)
-        call.enqueue(object: Callback<SignupResponseData> {
-            override fun onFailure(call: Call<SignupResponseData>, t: Throwable) {
-                // TODO("Not yet implemented")
-                Log.v("DEBUG : ", t.message.toString())
+        val call = RetrofitClient.apiInterface.getUpcomingActivities(Constants.USER_AUTHTOKEN)
+        call.enqueue(object: Callback<UpcomingActivitiesResponseData> {
+            override fun onFailure(call: Call<UpcomingActivitiesResponseData>, t: Throwable) {
+                Log.e("DEBUG : ", t.message.toString())
             }
 
             override fun onResponse(
-                call: Call<SignupResponseData>,
-                response: Response<SignupResponseData>
+                call: Call<UpcomingActivitiesResponseData>,
+                response: Response<UpcomingActivitiesResponseData>
             ) {
 
                 if(response.body()!= null){
@@ -35,7 +34,7 @@ object SignupActivityRepository {
                     if(response.body().toString() !=null){
 
                         val data = response.body()
-                        signupResponseData.value = data!!
+                        upcomingActivitiesResponseData.value = data!!
 
                     }else{
 
@@ -52,6 +51,8 @@ object SignupActivityRepository {
             }
         })
 
-        return signupResponseData
+        return upcomingActivitiesResponseData
     }
+
+
 }

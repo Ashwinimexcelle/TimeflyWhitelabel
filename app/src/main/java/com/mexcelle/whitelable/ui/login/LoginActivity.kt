@@ -11,8 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.mexcelle.whitelable.R
 import com.mexcelle.whitelable.databinding.LoginActivityBinding
+import com.mexcelle.whitelable.ui.main.MainActivity
 import com.mexcelle.whitelable.ui.register.RegisterActivity
-import com.mexcelle.whitelable.util.Utility
+import com.mexcelle.whitelable.util.*
 import com.mexcelle.whitelable.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -27,8 +28,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
 
-
-
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.setLifecycleOwner(this)
@@ -37,33 +36,57 @@ class LoginActivity : AppCompatActivity() {
 
         button_login.setOnClickListener {
 
-            //wp7progressBar.showProgressBar()
-            Utility.showProgressDialog(this@LoginActivity)
 
-            loginViewModel.login(this@LoginActivity)!!.observe(this, Observer { LoginResponseData ->
+            if (Utility.isOnline(this@LoginActivity)) {
 
-                Log.e("here 0","here 0");
+                Utility.showProgressDialog(this@LoginActivity)
+                loginViewModel.login(this@LoginActivity)!!
+                    .observe(this, Observer { loginResponseData ->
 
-               /* runOnUiThread(Runnable {*/
+                        if (loginResponseData?.data?.size!! > 0) {
 
-                    Log.e("here 1","here 1 ");
-                    Utility.hideProgressDialog(this@LoginActivity)
+                            Utility.hideProgressDialog(this@LoginActivity)
+                            Constants.USER_NAME = loginResponseData?.data[0].name
+                            Constants.USER_EMAILID = loginResponseData?.data[0].email_id
+                            Constants.USER_AUTHTOKEN = loginResponseData?.data[0].auth_token
+                            Constants.USER_ENTITYNAME = loginResponseData?.data[0].entity_name
+                            Constants.USER_COMPANYNAME = loginResponseData?.data[0].company_name
+
+                            prefs.initAuthToken = Constants.USER_AUTHTOKEN
+
+                            Log.e("sharedPref?.initAuthToken","initAuthToken "+ prefs.initAuthToken);
+                            Log.e("initAuthToken","initAuthToken "+Constants.USER_AUTHTOKEN);
+
+                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                            startActivity(intent)
+
+                        } else {
+
+                            Utility.showDialog(
+                                this,
+                                "Error !!",
+                                "" + loginResponseData.message,
+                                "Ok",
+                                "Cancel"
+                            )
+                            Utility.hideProgressDialog(this@LoginActivity)
+
+                        }
 
 
-                /*})*/
-            })
+                    })
 
+            } else {
 
-            /*runOnUiThread(Runnable {
+                Utility.showDialog(
+                    this,
+                    "Network Error !!",
+                    "Please check your network connection.",
+                    "Ok",
+                    "Cancel"
+                )
 
-                loginViewModel.login(this@LoginActivity)!!.observe(this, Observer { loginResponseData ->
-
-                    //wp7progressBar.hideProgressBar()
-                    Utility.hideProgressDialog(this@LoginActivity)
-
-
-                })*/
-
+            }
 
 
         }

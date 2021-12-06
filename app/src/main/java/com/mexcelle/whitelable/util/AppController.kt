@@ -9,6 +9,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.Gravity
 import android.widget.Toast
+import com.google.firebase.ktx.Firebase
 import com.mexcelle.whitelable.R
 
 val prefs: SharedPref by lazy {

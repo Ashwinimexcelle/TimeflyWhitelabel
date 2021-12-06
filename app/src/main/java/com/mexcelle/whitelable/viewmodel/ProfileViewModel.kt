@@ -8,12 +8,15 @@ import com.mexcelle.whitelable.model.*
 import com.mexcelle.whitelable.repository.LoginActivityRepository
 import com.mexcelle.whitelable.repository.ProfileActivityRepository
 import com.mexcelle.whitelable.util.Utility
+import java.io.File
 
 class ProfileViewModel  : ViewModel() {
 
     var profileResponseData: MutableLiveData<ProfileResponseData?>? = MutableLiveData<ProfileResponseData?>()
     var profileUpdateResponseData: MutableLiveData<ProfileUpdateResponseData?>? = MutableLiveData<ProfileUpdateResponseData?>()
-    var upcomingActivitiesResponseData: MutableLiveData<UpcomingActivitiesResponseData?>? = MutableLiveData<UpcomingActivitiesResponseData?>()
+    var fileUploadResponse: MutableLiveData<FileUploadResponse?>? = MutableLiveData<FileUploadResponse?>()
+
+    var upcomingActivitiesResponseData: MutableLiveData<ProfileUpcomingActivitiesResponseData?>? = MutableLiveData<ProfileUpcomingActivitiesResponseData?>()
     var completedActivitiesResponseData: MutableLiveData<CompletedActivitiesResponseData?>? = MutableLiveData<CompletedActivitiesResponseData?>()
     lateinit var profileInputData : ProfileInputData
     var username : String = ""
@@ -56,7 +59,7 @@ class ProfileViewModel  : ViewModel() {
 
     }
 
-    fun getUpcomingActivties(context: Context) : MutableLiveData<UpcomingActivitiesResponseData?>? {
+    fun getUpcomingActivties(context: Context) : MutableLiveData<ProfileUpcomingActivitiesResponseData?>? {
 
         Log.e("Here 3","Here 3")
         upcomingActivitiesResponseData = ProfileActivityRepository.getUpcomingActivities(context)
@@ -73,9 +76,29 @@ class ProfileViewModel  : ViewModel() {
 
     fun updateProfile(context: Context) : MutableLiveData<ProfileUpdateResponseData?>? {
 
-        profileInputData =  ProfileInputData(username,"",age,bio,gender,companyName)
+        var g:String = ""
+        if(gender.equals("Male")){
+
+            g = "M"
+        }else if(gender.equals("Female")){
+
+            g = "F"
+        }else{
+
+            g = "O"
+
+        }
+        profileInputData =  ProfileInputData(username,"",age,bio,g,companyName,designation)
         profileUpdateResponseData = ProfileActivityRepository.updateProfile(context,profileInputData)
         return profileUpdateResponseData
+
+    }
+
+    fun uploadImage(context: Context,userProfileUploadImageRequestModel: UserProfileUploadImageRequestModel) : MutableLiveData<FileUploadResponse?>? {
+
+
+        fileUploadResponse = ProfileActivityRepository.uploadImage(context,userProfileUploadImageRequestModel)
+        return fileUploadResponse
 
     }
 

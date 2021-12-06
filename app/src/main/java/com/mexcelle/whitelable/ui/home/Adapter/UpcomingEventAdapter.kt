@@ -12,15 +12,19 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.mexcelle.whitelable.R
 import com.mexcelle.whitelable.model.UpcomingActivitiesResponseDataDetails
+import com.mexcelle.whitelable.ui.charity.adapter.CharityAdapter
+import com.mexcelle.whitelable.util.Utility
 import java.util.*
 
 //UpcomingEventAdapter
 
 class UpcomingEventAdapter(
     mList: ArrayList<UpcomingActivitiesResponseDataDetails>,
-    activityContext: Context, listener: OnItemClickListener) :
+    activityContext: Context, listener: UpcomingEventAdapter.OnItemClickListener
+) :
     RecyclerView.Adapter<UpcomingEventAdapter.MyViewHolder?>(), View.OnClickListener {
     var mContext: Context
     private val listener: OnItemClickListener
@@ -37,7 +41,7 @@ class UpcomingEventAdapter(
 
 
     interface OnItemClickListener {
-        fun onItemClick()
+        fun onItemClick(upcomingActivitiesList: UpcomingActivitiesResponseDataDetails?)
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -88,16 +92,34 @@ class UpcomingEventAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, listPosition: Int) {
 
-        holder.foodDonationTextView.text = upcomingActivitiesList[listPosition].name
-        holder.foodTextView.text =  upcomingActivitiesList[listPosition].place
-        Glide.with(holder.itemView.getContext()).load(upcomingActivitiesList!!.get(listPosition)!!.image)
+        holder.foodDonationTextView.text =  Utility.sentenceCaseForText(upcomingActivitiesList[listPosition].name)
+        holder.foodTextView.text =  Utility.sentenceCaseForText(upcomingActivitiesList[listPosition].place)
+
+
+        Utility.setSemibold(mContext,holder.foodTextView)
+
+        val requestOptions = RequestOptions()
+        requestOptions.placeholder(R.drawable.placeholder)
+        requestOptions.error(R.drawable.placeholder)
+
+
+        Glide.with(holder.itemView.getContext())
+            .applyDefaultRequestOptions(requestOptions)
+            .load(upcomingActivitiesList!!.get(listPosition)!!.image)
             .into(holder.upcomingactivityImageView);
 
         holder.joinTextview.setOnClickListener {
-            listener.onItemClick()
+            listener.onItemClick(upcomingActivitiesList[listPosition])
 
 
         }
+
+        holder.upcomingactivityImageView.setOnClickListener {
+            listener.onItemClick(upcomingActivitiesList[listPosition])
+
+
+        }
+
 
     }
 

@@ -1,10 +1,17 @@
 package com.mexcelle.whitelable.ui.login
 
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
+import android.text.InputType
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -32,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.setLifecycleOwner(this)
         binding.loginViewModel = loginViewModel
-
+        init();
 
         button_login.setOnClickListener {
 
@@ -43,29 +50,53 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.login(this@LoginActivity)!!
                     .observe(this, Observer { loginResponseData ->
 
-                        if (loginResponseData?.data?.size!! > 0) {
 
-                            Utility.hideProgressDialog(this@LoginActivity)
-                            Constants.USER_NAME = loginResponseData?.data[0].name
-                            Constants.USER_EMAILID = loginResponseData?.data[0].email_id
-                            Constants.USER_AUTHTOKEN = loginResponseData?.data[0].auth_token
-                            Constants.USER_ENTITYNAME = loginResponseData?.data[0].entity_name
-                            Constants.USER_COMPANYNAME = loginResponseData?.data[0].company_name
+                        if (loginResponseData?.status.equals("success")) {
 
-                            prefs.initAuthToken = Constants.USER_AUTHTOKEN
+                            if (loginResponseData?.data?.size!! > 0) {
 
-                            Log.e("sharedPref?.initAuthToken","initAuthToken "+ prefs.initAuthToken);
-                            Log.e("initAuthToken","initAuthToken "+Constants.USER_AUTHTOKEN);
+                                Utility.hideProgressDialog(this@LoginActivity)
+                                Constants.USER_NAME = loginResponseData?.data[0].name
+                                Constants.USER_EMAILID = loginResponseData?.data[0].email_id
+                                Constants.USER_AUTHTOKEN = loginResponseData?.data[0].auth_token
+                                Constants.USER_ENTITYNAME = loginResponseData?.data[0].entity_name
+                                Constants.USER_COMPANYNAME = loginResponseData?.data[0].company_name
 
-                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                            startActivity(intent)
+                                prefs.initAuthToken = Constants.USER_AUTHTOKEN
+                                prefs.initUsername = Constants.USER_NAME
+                                prefs.initEmailid = Constants.USER_EMAILID
+                                prefs.initEntityName = Constants.USER_ENTITYNAME
+                                prefs.initCompanyName = Constants.USER_COMPANYNAME
+                                prefs.initUserImageUrl = Constants.USER_IMAGE_URL
+                                prefs.initUserImageUrl = Constants.USER_IMAGE_URL
+                                Log.e(
+                                    "sharedPref?.initAuthToken",
+                                    "initAuthToken " + prefs.initAuthToken
+                                );
+                                Log.e("initAuthToken", "initAuthToken " + Constants.USER_AUTHTOKEN);
+
+                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                startActivity(intent)
+
+                            } else {
+
+                                Utility.showDialog(
+                                    this,
+                                    "Error !!",
+                                    "" + loginResponseData.message,
+                                    "Ok",
+                                    "Cancel"
+                                )
+                                Utility.hideProgressDialog(this@LoginActivity)
+
+                            }
 
                         } else {
 
                             Utility.showDialog(
                                 this,
                                 "Error !!",
-                                "" + loginResponseData.message,
+                                "" + loginResponseData?.message,
                                 "Ok",
                                 "Cancel"
                             )
@@ -95,5 +126,42 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(intent)
         }
+
+        password_icon.setOnClickListener {
+
+            if (password_icon.text.equals(getString(R.string.icon_hide_password))) {
+
+                password_icon.text = getString(R.string.icon_show_password)
+                et_password.inputType =
+                    InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
+
+            } else {
+
+                password_icon.text = getString(R.string.icon_hide_password)
+                et_password.inputType =
+                    InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+
+
+            }
+
+        }
+
     }
+
+
+    fun init() {
+
+        Utility.setSemibold(this, welcome_txt_id)
+        Utility.setSemibold(this, button_login)
+        Utility.setSemibold(this, forgot_password_id)
+        Utility.setThin(this, tv_register_user1)
+        Utility.setbold(this, tv_register_user)
+        Utility.setFontAwesome(this, password_icon)
+        Utility.setFontAwesome(this, email_icon)
+        Utility.setbold(this, login_txt)
+
+
+    }
+
+
 }

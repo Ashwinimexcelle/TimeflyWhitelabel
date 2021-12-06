@@ -21,4 +21,25 @@
     <string name="scan_code">Scan the QR code given at event location to\nparticipate in event</string>
     <string name="cancel_subtitle">Are you sure you want to cancel going\nto the event?</string>
     <string name="shared_prefrence_key">com.mexcelle.whitelable</string>
+    <string name="your_key">AIzaSyBHb0QQrIYfZrjm2NoG-yU1L6thoJrvJ8w</string>
+
+    <string name="login_button_txt">Continue</string>
+    <string name="login_screen_txt1">Hey !!We missed you, welcome back</string>
+
+
+
+
+    <string name="icon_calendar">&#xf073;</string>
+    <string name="icon_email">&#xf0e0;</string>
+    <string name="icon_show_password">&#xf06e;</string>
+    <string name="icon_hide_password">&#xf070;</string>
+    <string name="icon_clock">&#xf017;</string>
+    <string name="icon_side_menu">&#xf00a;</string>
+    <string name="icon_camera">&#xf030;</string>
+
+
+
+
+
+
 </resources>

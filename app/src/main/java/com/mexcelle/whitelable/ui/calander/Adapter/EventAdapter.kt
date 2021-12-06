@@ -16,10 +16,12 @@ import com.mexcelle.whitelable.R
 import com.mexcelle.whitelable.model.CalendarwiseResponseData
 import com.mexcelle.whitelable.model.CalendarwiseResponseDataDetails
 import com.mexcelle.whitelable.model.UpcomingActivitiesResponseDataDetails
+import com.mexcelle.whitelable.util.Utility
 import java.util.ArrayList
 
 
 class EventAdapter(
+
     mList: ArrayList<CalendarwiseResponseDataDetails>,
     activityContext: Context, listener: OnItemClickListener
 ) : RecyclerView.Adapter<EventAdapter.MyViewHolder?>(), View.OnClickListener {
@@ -42,12 +44,11 @@ class EventAdapter(
 
 
         init {
+
             foodDonationTextView = itemView.findViewById<View>(R.id.food_donation_name) as TextView
             foodTextView = itemView.findViewById<View>(R.id.food_name_tv) as TextView
             eventImageView = itemView.findViewById<View>(R.id.event_image) as ImageView
             joinTextview = itemView.findViewById<View>(R.id.join_tv) as TextView
-
-
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
@@ -83,7 +84,9 @@ class EventAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, listPosition: Int) {
 
         holder.foodTextView.text = calendarwiseUpcomingActivitiesList[listPosition].name
-        holder.foodDonationTextView.text = calendarwiseUpcomingActivitiesList[listPosition].place
+        //holder.foodDonationTextView.text = calendarwiseUpcomingActivitiesList[listPosition].place
+        Utility.setSemibold(mContext,holder.foodDonationTextView)
+
         Glide.with(holder.itemView.getContext()).load(calendarwiseUpcomingActivitiesList!!.get(listPosition)!!.image)
             .into(holder.eventImageView);
         holder.eventImageView.setOnClickListener {

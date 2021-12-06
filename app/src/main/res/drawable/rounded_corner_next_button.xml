@@ -4,10 +4,10 @@
 
     <stroke
         android:width="1dip"
-        android:color="@color/color_dark_blue" />
+        android:color="@color/proceed_color" />
 
-    <solid android:color="@color/color_dark_blue" />
+    <solid android:color="@color/proceed_color" />
 
-    <corners android:radius="5dp" />
+    <corners android:radius="@dimen/_5sdp" />
 
 </shape>

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mexcelle.whitelable.R
 import com.mexcelle.whitelable.model.CompletedActivitiesResponseDataDetails
+import com.mexcelle.whitelable.util.Utility
 import java.util.ArrayList
 
 class CompletedActivitiesAdapter(
@@ -86,16 +87,20 @@ class CompletedActivitiesAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, listPosition: Int) {
 
-        holder.foodDonationTextView.text = completedActivitiesList[listPosition].name
-        holder.foodTextView.text =  completedActivitiesList[listPosition].place
-        Glide.with(holder.itemView.getContext()).load(completedActivitiesList!!.get(listPosition)!!.image)
+        holder.foodDonationTextView.text = Utility.sentenceCaseForText(completedActivitiesList[listPosition].activity_name)
+        holder.foodTextView.text =  Utility.sentenceCaseForText(completedActivitiesList[listPosition].activity_address)
+        Glide.with(holder.itemView.getContext()).load(completedActivitiesList!!.get(listPosition)!!.activity_image)
             .into(holder.upcomingactivityImageView);
+
+        Utility.setSemibold(mContext,holder.foodTextView)
+
 
         holder.joinTextview.setOnClickListener {
             listener.onItemClick()
 
 
         }
+        holder.joinTextview.visibility = View.INVISIBLE
 
     }
 

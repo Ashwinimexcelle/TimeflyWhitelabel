@@ -54,6 +54,8 @@ class SplashScreen : AppCompatActivity() {
                 Constants.USER_NAME = prefs?.initUsername!!
                 Constants.USER_COMPANYNAME = prefs?.initCompanyName!!
                 Constants.USER_ENTITYNAME = prefs?.initEntityName!!
+                Constants.USER_IMAGE_URL = prefs?.initUserImageUrl!!
+
 
                 val intent = Intent(this@SplashScreen, MainActivity::class.java)
                 startActivity(intent)

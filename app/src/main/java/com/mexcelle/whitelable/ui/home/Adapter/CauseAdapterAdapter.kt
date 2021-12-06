@@ -1,6 +1,8 @@
 package com.mexcelle.whitelable.ui.home.Adapter
 
 import android.content.Context
+import android.text.method.TextKeyListener.clear
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,13 +14,15 @@ import com.bumptech.glide.Glide
 import com.mexcelle.whitelable.R
 import com.mexcelle.whitelable.model.CauseResponseData
 import com.mexcelle.whitelable.model.CauseResponseDataDetails
+import com.mexcelle.whitelable.util.Utility
+import java.util.Collections.addAll
 
 //ChooseCharityAdapter
 
 class CauseAdapterAdapter(
     mList: ArrayList<CauseResponseDataDetails>,
     activityContext: Context,
-    listener: OnItemClickListener
+    listener: CauseAdapterAdapter.OnItemClickListener
 ) : RecyclerView.Adapter<CauseAdapterAdapter.MyViewHolder?>(), View.OnClickListener {
 
     var mContext: Context
@@ -32,6 +36,18 @@ class CauseAdapterAdapter(
         mContext = activityContext
         this.listener = listener
         causeList = mList
+        Log.e("here in adapter11","here in adapter11");
+        notifyDataSetChanged()
+
+    }
+
+    fun setDataChange(asList: ArrayList<CauseResponseDataDetails>) {
+        //now, tell the adapter about the update
+        Log.e("here in update","here in update");
+        this.causeList.clear();
+        this.causeList = asList
+        addAll(asList);
+        notifyDataSetChanged()
     }
 
     interface OnItemClickListener {
@@ -45,12 +61,14 @@ class CauseAdapterAdapter(
 
 
         init {
+            Log.e("here in adapter1122","here in adapter1122");
 
             causeImageView = itemView.findViewById<View>(R.id.charity_category_image) as ImageView
             causeNameTextView = itemView.findViewById<View>(R.id.cause_name) as TextView
 
 
         }
+
     }
 
     override fun onCreateViewHolder(
@@ -64,15 +82,36 @@ class CauseAdapterAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, listPosition: Int) {
 
-        holder.causeNameTextView.text = causeList!!.get(listPosition)!!.name
 
+        Log.e("here in adapter 33333","here in adapter 33333");
+        holder.causeNameTextView.text = causeList!!.get(listPosition)!!.name
         Glide.with(holder.itemView.getContext()).load(causeList!!.get(listPosition)!!.image)
             .into(holder.causeImageView);
+
+        Utility.setRegular(mContext,holder.causeNameTextView)
+
+
+        holder.causeNameTextView.setOnClickListener {
+            listener.onItemClick()
+
+
+        }
+
+        holder.causeImageView.setOnClickListener {
+            listener.onItemClick()
+
+
+        }
+
+
 
 
     }
 
-    override fun onClick(view: View) {}
+    override fun onClick(view: View) {
+
+
+    }
 
 
 

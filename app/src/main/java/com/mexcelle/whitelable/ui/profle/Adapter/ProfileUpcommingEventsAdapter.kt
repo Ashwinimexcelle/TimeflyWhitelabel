@@ -8,16 +8,34 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewOutlineProvider
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.mexcelle.whitelable.R
+import com.mexcelle.whitelable.model.CompletedActivitiesResponseDataDetails
+import com.mexcelle.whitelable.model.ProfileUpcomingActivitiesResponseDataDetails
+import com.mexcelle.whitelable.util.Utility
+import java.util.ArrayList
 
 
+class ProfileUpcommingEventsAdapter(
 
-class ProfileUpcommingEventsAdapter(activityContext: Context, listener: OnItemClickListener) : RecyclerView.Adapter<ProfileUpcommingEventsAdapter.MyViewHolder?>(), View.OnClickListener {
+    mList: ArrayList<ProfileUpcomingActivitiesResponseDataDetails>,
+    activityContext: Context, listener: OnItemClickListener) :
+    RecyclerView.Adapter<ProfileUpcommingEventsAdapter.MyViewHolder?>(), View.OnClickListener {
     var mContext: Context
     private val listener: OnItemClickListener
     private var image: String? = null
+    var completedActivitiesList: ArrayList<ProfileUpcomingActivitiesResponseDataDetails> = ArrayList<ProfileUpcomingActivitiesResponseDataDetails>()
+
+
+    init {
+
+        mContext = activityContext
+        this.listener = listener
+        this.completedActivitiesList = mList
+    }
 
 
     interface OnItemClickListener {
@@ -25,55 +43,77 @@ class ProfileUpcommingEventsAdapter(activityContext: Context, listener: OnItemCl
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        var chooseCharityImageView: ImageView
+        var foodDonationTextView: TextView
+        var joinTextview: TextView
+        var foodTextView: TextView
+        var upcomingactivityImageView: ImageView
         val curveRadius = 20F
 
 
         init {
-
-            chooseCharityImageView = itemView.findViewById<View>(R.id.profile_event_image) as ImageView
+            foodDonationTextView = itemView.findViewById<View>(R.id.food_donation_name) as TextView
+            foodTextView = itemView.findViewById<View>(R.id.food_name_tv) as TextView
+            upcomingactivityImageView = itemView.findViewById<View>(R.id.event_image) as ImageView
+            joinTextview = itemView.findViewById<View>(R.id.join_tv) as TextView
 
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-                chooseCharityImageView.outlineProvider = object : ViewOutlineProvider() {
+                upcomingactivityImageView.outlineProvider = object : ViewOutlineProvider() {
 
                     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
                     override fun getOutline(view: View?, outline: Outline?) {
-                        outline?.setRoundRect(0, 0, view!!.width, (view.height+curveRadius).toInt(), curveRadius)
+                        outline?.setRoundRect(
+                            0,
+                            0,
+                            view!!.width,
+                            (view.height + curveRadius).toInt(),
+                            curveRadius
+                        )
                     }
                 }
 
-                chooseCharityImageView.clipToOutline = true
+                upcomingactivityImageView.clipToOutline = true
 
             }
-
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MyViewHolder {
         val view: View = LayoutInflater.from(parent.context)
-                .inflate(R.layout.profile_upcomming_event, parent, false)
+            .inflate(R.layout.profile_upcomming_event, parent, false)
         return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, listPosition: Int) {
+
+        holder.foodDonationTextView.text = Utility.sentenceCaseForText(completedActivitiesList[listPosition].activity_name)
+        holder.foodTextView.text =  Utility.sentenceCaseForText(completedActivitiesList[listPosition].activity_address)
+        Glide.with(holder.itemView.getContext()).load(completedActivitiesList!!.get(listPosition)!!.activity_image)
+            .into(holder.upcomingactivityImageView);
+
+        Utility.setSemibold(mContext,holder.foodTextView)
+
+
+        holder.joinTextview.setOnClickListener {
+            listener.onItemClick()
+
+
+        }
+        holder.joinTextview.visibility = View.INVISIBLE
 
     }
 
     override fun onClick(view: View) {}
 
 
-    init {
 
-        mContext = activityContext
-        this.listener = listener
-    }
 
     override fun getItemCount(): Int {
-        return 9
+        return completedActivitiesList.size
 
     }
 

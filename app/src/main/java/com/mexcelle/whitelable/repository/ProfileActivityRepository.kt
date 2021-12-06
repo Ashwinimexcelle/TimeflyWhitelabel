@@ -14,9 +14,11 @@ import retrofit2.Response
 object ProfileActivityRepository {
 
     val profileResponseData = MutableLiveData<ProfileResponseData?>()
-    val upcomingActivitiesResponseData = MutableLiveData<UpcomingActivitiesResponseData?>()
+    val upcomingActivitiesResponseData = MutableLiveData<ProfileUpcomingActivitiesResponseData?>()
     val completedActivitiesResponseData = MutableLiveData<CompletedActivitiesResponseData?>()
     val profileUpdateResponseData = MutableLiveData<ProfileUpdateResponseData?>()
+    val fileUploadResponse = MutableLiveData<FileUploadResponse?>()
+
 
 
     fun getProfile(context: Context): MutableLiveData<ProfileResponseData?> {
@@ -59,20 +61,20 @@ object ProfileActivityRepository {
     }
 
 
-    fun getUpcomingActivities(context: Context): MutableLiveData<UpcomingActivitiesResponseData?> {
+    fun getUpcomingActivities(context: Context): MutableLiveData<ProfileUpcomingActivitiesResponseData?> {
         Log.e("Here 4","Here 4")
 
         val call = RetrofitClient.apiInterface.getProfileUpcomingActivities(Constants.USER_AUTHTOKEN)
-        call.enqueue(object: Callback<UpcomingActivitiesResponseData> {
-            override fun onFailure(call: Call<UpcomingActivitiesResponseData>, t: Throwable) {
+        call.enqueue(object: Callback<ProfileUpcomingActivitiesResponseData> {
+            override fun onFailure(call: Call<ProfileUpcomingActivitiesResponseData>, t: Throwable) {
                 Log.e("DEBUG : ", t.message.toString())
                 Log.e("Here 5","Here 5")
 
             }
 
             override fun onResponse(
-                call: Call<UpcomingActivitiesResponseData>,
-                response: Response<UpcomingActivitiesResponseData>
+                call: Call<ProfileUpcomingActivitiesResponseData>,
+                response: Response<ProfileUpcomingActivitiesResponseData>
             ) {
                 if(response.body()!= null){
 
@@ -182,6 +184,47 @@ object ProfileActivityRepository {
         })
 
         return profileUpdateResponseData
+    }
+
+
+    fun uploadImage(context: Context,userProfileUploadImageRequestModel: UserProfileUploadImageRequestModel): MutableLiveData<FileUploadResponse?> {
+
+        val call = RetrofitClient.apiInterface.uploadImage(Constants.USER_AUTHTOKEN,userProfileUploadImageRequestModel.file)
+        call?.enqueue(object: Callback<FileUploadResponse> {
+            override fun onFailure(call: Call<FileUploadResponse>, t: Throwable) {
+                Log.e("DEBUG : ", t.message.toString())
+            }
+
+            override fun onResponse(
+                call: Call<FileUploadResponse>,
+                response: Response<FileUploadResponse>
+            ) {
+
+                Log.e("DEBUG1 : ",response.body().toString() )
+
+                if(response.body()!= null){
+
+                    if(response.body().toString() !=null){
+
+                        val data = response.body()
+                        fileUploadResponse.value = data!!
+
+                    }else{
+
+                        Utility.hideProgressDialog(context)
+                        Utility.showDialog( context,"Error !!","Server Error.","Ok","Cancel")
+                    }
+                }else{
+
+                    Utility.hideProgressDialog(context)
+                    Utility.showDialog( context,"Error !!","Server Error.","Ok","Cancel")
+
+                }
+
+            }
+        })
+
+        return fileUploadResponse
     }
 
 

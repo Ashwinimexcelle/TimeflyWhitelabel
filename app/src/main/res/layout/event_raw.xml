@@ -1,63 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_170sdp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/rounded_bg_item"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:background="@color/grey">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/event_image"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/thumbnail_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_100sdp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/bg_rounded"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bgmen" />
+            android:background="@color/color_middle_grey"
+            android:elevation="10dp"
+            app:cardCornerRadius="8dp">
+
+            <ImageView
+                android:id="@+id/event_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:background="@color/color_middle_grey"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bgmen" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/food_name_tv"
-            android:layout_width="@dimen/_100sdp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/thumbnail_image"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_10sdp"
             android:text="Food distribution to underprivileged"
-            android:textSize="@dimen/_9ssp"  />
+            android:textColor="@color/grey_dark1_text"
+            android:textSize="@dimen/_10ssp" />
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/food_donation_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/food_name_tv"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_70sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/food_donation_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:text="The food donation of NYC"
-                android:textSize="@dimen/_7ssp"  />
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="The food donation of NYC"
+            android:textColor="@color/dark_grey1"
+            android:textSize="@dimen/_9ssp" />
+
+
+        <LinearLayout
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@+id/thumbnail_image"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:gravity="center_vertical">
+
             <TextView
                 android:id="@+id/join_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_dark_blue"
-                android:text="Join"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_below="@+id/thumbnail_image"
                 android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/_3sdp"
                 android:layout_marginRight="@dimen/_5sdp"
-                android:textSize="@dimen/_9ssp"  />
-        </RelativeLayout>
+                android:background="@drawable/rounded_corner_next_button"
+                android:gravity="center"
+                android:text="Join"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_9ssp" />
+        </LinearLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

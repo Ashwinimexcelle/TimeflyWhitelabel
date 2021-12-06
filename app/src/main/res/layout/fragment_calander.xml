@@ -36,7 +36,7 @@
 
     <Spinner
         android:id="@+id/couse_spinner"
-        android:layout_width="@dimen/_70sdp"
+        android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_30sdp"
         android:background="@drawable/spinner_bg"
         android:layout_marginTop="@dimen/_10sdp"

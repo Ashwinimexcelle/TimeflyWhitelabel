@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "73608089363",
+    "project_id": "whitelabel-328419",
+    "storage_bucket": "whitelabel-328419.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73608089363:android:444956e42ed7e9b76b14e6",
+        "android_client_info": {
+          "package_name": "com.mexcelle.whitelable"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73608089363-ui04umsr703mbqql3laee404s6635p6v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mexcelle.whitelable",
+            "certificate_hash": "5929e4cdcc248c80ebe5bebea44fae192ecd2456"
+          }
+        },
+        {
+          "client_id": "73608089363-62ovb4oso5u7m0tmcaal16ad9l9c0rm6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHb0QQrIYfZrjm2NoG-yU1L6thoJrvJ8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73608089363-62ovb4oso5u7m0tmcaal16ad9l9c0rm6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

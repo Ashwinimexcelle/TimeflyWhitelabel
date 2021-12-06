@@ -13,15 +13,17 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
                 android:id="@+id/text_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
                 android:text="Upcoming Events"
                 android:textAlignment="center"
-                android:textColor="@color/color_dark_blue"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textColor="@color/dark_grey_heading1"
                 android:textSize="@dimen/_12sdp"
-                android:layout_marginLeft="@dimen/_20sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,10 +31,10 @@
                 android:id="@+id/upcomming_activities_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
-                app:layout_constraintTop_toBottomOf="@id/text_home"
-                app:layout_constraintRight_toRightOf="parent"/>
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_home" />
 
             <com.arindicatorview.ARIndicatorView
                 android:id="@+id/ar_indicator"
@@ -40,45 +42,46 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
+                app:animate_indicator_scrubbing="true"
+                app:indicator_animation="@anim/zoom_in"
+                app:indicator_color="@color/grey_dark"
+                app:indicator_scrubbing="true"
+                app:indicator_shape="@drawable/round_shape"
                 app:indicator_size="15"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/upcomming_activities_rv"
                 app:number_of_indicators="5"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:indicator_color="@color/colorAccent"
-                app:selected_color="@color/colorPrimary"
-                app:indicator_animation="@anim/zoom_in"
-                app:indicator_shape="@drawable/round_shape"
-                app:indicator_scrubbing="true"
-                app:animate_indicator_scrubbing="true"
-                />
+                app:selected_color="@color/color_dark_blue" />
 
             <TextView
+                android:id="@+id/charity_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choose Charity"
-                android:id="@+id/charity_tv"
-                app:layout_constraintTop_toBottomOf="@+id/ar_indicator"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Choose Activity"
+                android:textColor="@color/dark_grey_heading1"
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:textColor="@color/color_dark_blue"/>
+                app:layout_constraintTop_toBottomOf="@+id/ar_indicator" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cause_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/charity_tv"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_20sdp"
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_15sdp"
+                android:background="@color/white"
+                android:clipToPadding="false"
                 android:nestedScrollingEnabled="false"
                 android:stretchMode="columnWidth"
-                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
-            >
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/charity_tv"
+                tools:layout_editor_absoluteX="14dp">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -95,12 +98,9 @@
                 android:numColumns="3" />-->
 
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

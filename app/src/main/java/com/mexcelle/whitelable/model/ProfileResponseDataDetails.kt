@@ -16,6 +16,8 @@ data class ProfileResponseDataDetails(
     val interest: String,
     val location: String,
     val skills: String,
+    val designation: String,
 
 
-)
+
+    )

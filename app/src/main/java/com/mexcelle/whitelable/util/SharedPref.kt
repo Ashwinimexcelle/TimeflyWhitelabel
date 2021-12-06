@@ -10,6 +10,8 @@ class SharedPref(context: Context) {
     private val USER_AUTHTOKEN = "authtoken"
     private val USER_ENTITYNAME = "entityname"
     private val USER_COMPANYNAME = "companyname"
+    private val USER_IMAGE_URL = "imageurl"
+
 
     private val preferences: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
    // private val preferences: SharedPreferences = context.getSharedPreferences(Context.MODE_PRIVATE)
@@ -34,4 +36,11 @@ class SharedPref(context: Context) {
     var initCompanyName: String?
         get() = preferences.getString(USER_COMPANYNAME, "1")
         set(value) = preferences.edit().putString(USER_COMPANYNAME, value).apply()
+
+
+    var initUserImageUrl: String?
+        get() = preferences.getString(USER_IMAGE_URL, "1")
+        set(value) = preferences.edit().putString(USER_IMAGE_URL, value).apply()
+
+
 }

@@ -71,17 +71,13 @@ class MainActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         Utility.setRegular(this,headerEmailId)
 
         headeImage = header.findViewById(R.id.user_imageView)
-        /*Glide.with(this).load(Constants.USER_IMAGE_URL)
-            .into(headeImage!!);
-        setSupportActionBar(toolbar)*/
         val navHostFragment= supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
         navController=navHostFragment.navController
-        // appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment,R.id.settingsFragment,R.id.notificationFragment),drawer_layout)
         appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.calanderFragment, R.id.charityFragment, R.id.profileFragment), drawerLayout)
-        //setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
         bottomNavigationView.setOnNavigationItemReselectedListener {
-            // Do nothing to ignore the reselection
+
+
         }
 
         navigationView.setupWithNavController(navController)

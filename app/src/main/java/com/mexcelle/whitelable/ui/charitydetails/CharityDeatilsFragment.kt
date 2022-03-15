@@ -222,7 +222,7 @@ class CharityDeatilsFragment : Fragment(), OnMapReadyCallback {
                             Glide.with(this).load(activityDetailsResponseData.data[0].activity_image)
                                 .into(event_image);
                             foundation_name.text = activityDetailsResponseData.data[0].activity_name
-                            about_tv.text = activityDetailsResponseData.data[0].charity_description
+                            about_tv.text = activityDetailsResponseData.data[0].description
                             cause_tv.text = activityDetailsResponseData.data[0].activity_name
                             date_tv.text = activityDetailsResponseData.data[0].activity_date
                             time_tv.text =
@@ -250,7 +250,7 @@ class CharityDeatilsFragment : Fragment(), OnMapReadyCallback {
                             map?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(
                                 activityDetailsResponseData.data[0].activity_location_latitude.toDouble(),
                                 activityDetailsResponseData.data[0].activity_location_longitude.toDouble()
-                            ), 10F
+                            ), 15F
                             ))
 
                             if( activityDetailsResponseData.data[0].join_status.equals("false")){

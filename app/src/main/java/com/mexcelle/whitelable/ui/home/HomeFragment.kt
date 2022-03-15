@@ -47,9 +47,6 @@ class HomeFragment : Fragment() {
     var isUpcomingActivitiesShown: Boolean = false
     var isCauseShown: Boolean = false
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -201,15 +198,21 @@ class HomeFragment : Fragment() {
                                     mActivity,
                                     object : UpcomingEventAdapter.OnItemClickListener {
                                         override fun onItemClick(upcomingActivitiesList: UpcomingActivitiesResponseDataDetails?) {
-                                            MainActivity.bottomNavigationView.getMenu().setGroupCheckable(0, false, true);
+                                            /*MainActivity.bottomNavigationView.getMenu().setGroupCheckable(0, false, true);
+                                            MainActivity.bottomNavigationView.getMenu().setGroupCheckable(0, false, true);*/
+                                            MainActivity.bottomNavigationView.getMenu().findItem(R.id.unchecked).setChecked(true);
+                                            //MainActivity.bottomNavigationView.findViewById(R.id.unchecked).setVisibility(View.GONE);
+
                                             Log.e("Here ","Here in click");
                                             val action = HomeFragmentDirections.actionHomeFragmentToCharityDeatilsFragment("from home fragment",
                                                 upcomingActivitiesList?.id!!
                                             )
-                                            var bundle = bundleOf("charity_id" to upcomingActivitiesList?.charity_id )
-                                            // bundle.putString("charity_is",upcomingActivitiesList?.charity_id )
-                                            navController.navigate(action)
+                                            isCauseShown = false
+                                            isUpcomingActivitiesShown = false
 
+
+                                            var bundle = bundleOf("charity_id" to upcomingActivitiesList?.charity_id )
+                                            navController.navigate(action)
 
                                         }
                                     })

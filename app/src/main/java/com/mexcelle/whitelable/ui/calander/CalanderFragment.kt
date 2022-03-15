@@ -110,7 +110,6 @@ class CalanderFragment : Fragment(), AdapterView.OnItemSelectedListener {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_MONTH, 1)
         val event = Event(calendar.timeInMillis, "Test")
-
         calenderEvent!!.initCalderItemClickCallback { dayContainerModel ->
 
             Log.e("here111", "here111");

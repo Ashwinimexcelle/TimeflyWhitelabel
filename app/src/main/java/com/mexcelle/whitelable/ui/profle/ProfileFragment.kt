@@ -1,7 +1,6 @@
 package com.mexcelle.whitelable.ui.profle
 
 import android.Manifest
-import android.R.attr
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Activity.RESULT_OK
@@ -20,55 +19,32 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mexcelle.whitelable.R
 import com.mexcelle.whitelable.databinding.ProfileFragmentBinding
-import com.mexcelle.whitelable.model.UpcomingActivitiesResponseDataDetails
-import com.mexcelle.whitelable.ui.home.Adapter.UpcomingEventAdapter
 import com.mexcelle.whitelable.ui.main.MainActivity
 import com.mexcelle.whitelable.ui.profle.Adapter.CompletedActivitiesAdapter
 import com.mexcelle.whitelable.util.Utility
 import com.mexcelle.whitelable.viewmodel.ProfileViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
-import android.widget.Toast
-
-import androidx.core.app.ActivityCompat.startActivityForResult
-
 import android.provider.MediaStore
-
 import android.content.Intent
-
 import android.content.DialogInterface
-
 import android.content.pm.PackageManager
-import androidx.core.app.ActivityCompat.startActivityForResult
 import android.net.Uri
 import android.database.Cursor
 import android.graphics.Bitmap
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.mexcelle.whitelable.model.UserProfileUploadImageRequestModel
-import com.mexcelle.whitelable.retrofit.ApiInterface
 import id.zelory.compressor.Compressor
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.MultipartBody.Part.Companion.createFormData
 import okhttp3.RequestBody
 import java.io.*
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat
 import android.content.Context
-import android.R.attr.data
 import android.provider.MediaStore.Images
 import com.mexcelle.whitelable.ui.profle.Adapter.ProfileUpcommingEventsAdapter
-
 import java.io.ByteArrayOutputStream
-
-
-
-
-
-
-
-
 
 
 
